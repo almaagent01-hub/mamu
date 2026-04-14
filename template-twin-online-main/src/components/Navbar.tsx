@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Menu, X, ChevronRight, ChevronDown, ArrowUpRight, Search, Globe } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 const megaMenuData: Record<string, { columns: { heading: string; links: { label: string; desc?: string; href: string }[] }[]; featured?: { title: string; desc: string; href: string } }> = {
   "Who We Are": {
@@ -105,36 +106,12 @@ const Navbar = () => {
       >
         <div className="container flex items-center justify-between h-20">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-3 group relative z-10">
-            <div className="relative">
-              <div className="grid grid-cols-2 gap-0.5 transition-transform duration-300 group-hover:scale-110">
-                <div className="w-3.5 h-3.5 bg-primary triangle-pattern" />
-                <div className="w-3.5 h-3.5 bg-primary triangle-pattern" />
-                <div className="w-3.5 h-3.5 bg-primary triangle-pattern" />
-                <div
-                  className={`w-3.5 h-3.5 triangle-pattern transition-colors duration-500 ${
-                    scrolled ? "bg-foreground" : "bg-primary-foreground"
-                  }`}
-                />
-              </div>
-              <div className="absolute -inset-2 bg-primary/10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity -z-10" />
-            </div>
-            <div>
-              <span
-                className={`text-lg font-bold tracking-tight transition-colors duration-500 ${
-                  scrolled ? "text-foreground" : "text-primary-foreground"
-                }`}
-              >
-                NTS Group
-              </span>
-              <p
-                className={`text-[10px] font-semibold tracking-[0.15em] uppercase transition-colors duration-500 ${
-                  scrolled ? "text-muted-foreground" : "text-primary-foreground/60"
-                }`}
-              >
-                Building Tomorrow
-              </p>
-            </div>
+          <a href="#" className="flex items-center group relative z-10">
+            <img
+              src={logo}
+              alt="NTS Group of Companies"
+              className="h-[120px] w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+            />
           </a>
 
           {/* Desktop Navigation */}
@@ -202,6 +179,7 @@ const Navbar = () => {
             <a
               href="#"
               className="ml-2 px-5 py-2.5 bg-primary text-primary-foreground text-sm font-medium rounded-full hover:opacity-90 transition-all duration-300 hover:shadow-lg hover:shadow-primary/25"
+              href="#contact"
             >
               Contact Us
             </a>
@@ -255,7 +233,7 @@ const Navbar = () => {
         {/* Mega Menu Panel */}
         {activeMega && megaMenuData[activeMega] && (
           <div
-            className="absolute top-full left-0 right-0 bg-background/98 backdrop-blur-xl border-b border-border shadow-2xl"
+            className="absolute top-full left-0 right-0 bg-white border-b border-gray-200 shadow-2xl"
             onMouseEnter={handleMegaPanelEnter}
             onMouseLeave={handleMegaLeave}
             style={{ animation: "mega-enter 0.25s ease-out" }}
@@ -266,7 +244,7 @@ const Navbar = () => {
                 <div className="col-span-8 grid grid-cols-2 gap-8">
                   {megaMenuData[activeMega].columns.map((col, ci) => (
                     <div key={ci}>
-                      <h4 className="text-xs font-semibold uppercase tracking-[0.2em] text-primary mb-4">
+                      <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-primary mb-4">
                         {col.heading}
                       </h4>
                       <div className="space-y-1">
@@ -281,11 +259,11 @@ const Navbar = () => {
                               <ArrowUpRight size={14} className="text-primary" />
                             </div>
                             <div>
-                              <span className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors">
+                              <span className="text-sm font-semibold text-gray-900 group-hover:text-primary transition-colors">
                                 {link.label}
                               </span>
                               {link.desc && (
-                                <p className="text-xs text-muted-foreground mt-0.5">{link.desc}</p>
+                                <p className="text-xs text-gray-500 mt-0.5">{link.desc}</p>
                               )}
                             </div>
                           </a>
@@ -306,10 +284,10 @@ const Navbar = () => {
                       <div className="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center mb-4">
                         <ArrowUpRight size={18} className="text-primary group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                       </div>
-                      <h4 className="text-lg font-bold text-foreground mb-2">
+                      <h4 className="text-lg font-bold text-gray-900 mb-2">
                         {megaMenuData[activeMega].featured!.title}
                       </h4>
-                      <p className="text-sm text-muted-foreground leading-relaxed">
+                      <p className="text-sm text-gray-600 leading-relaxed">
                         {megaMenuData[activeMega].featured!.desc}
                       </p>
                     </a>
@@ -360,7 +338,8 @@ const Navbar = () => {
             }}
           >
             <a
-              href="#"
+              href="#contact"
+              onClick={() => setMobileOpen(false)}
               className="flex items-center justify-center gap-2 w-full py-4 bg-primary text-primary-foreground rounded-2xl font-semibold text-lg"
             >
               Contact Us

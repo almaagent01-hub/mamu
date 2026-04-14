@@ -1,17 +1,19 @@
 import { ChevronRight } from "lucide-react";
-import heroBg from "@/assets/hero-bg.jpg";
 
 const HeroSection = () => {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
-      <img
-        src={heroBg}
-        alt="NTS Group construction project"
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
         className="absolute inset-0 w-full h-full object-cover"
-        width={1920}
-        height={1080}
-      />
-      <div className="absolute inset-0 bg-foreground/60" />
+        ref={(el) => { if (el) el.playbackRate = 2; }}
+      >
+        <source src="/src/assets/hero-bg.mp4" type="video/mp4" />
+      </video>
+      <div className="absolute inset-0 bg-foreground/75" />
 
       {/* Red triangle decorations */}
       <div className="absolute top-20 right-0 hidden lg:block">

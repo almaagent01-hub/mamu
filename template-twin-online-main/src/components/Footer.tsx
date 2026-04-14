@@ -1,4 +1,5 @@
 import { Mail, Phone, MapPin } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 const Footer = () => {
   return (
@@ -6,14 +7,8 @@ const Footer = () => {
       <div className="container">
         <div className="grid md:grid-cols-4 gap-12 mb-12">
           <div>
-            <div className="flex items-center gap-3 mb-4">
-              <div className="grid grid-cols-2 gap-0.5">
-                <div className="w-3 h-3 bg-primary triangle-pattern" />
-                <div className="w-3 h-3 bg-primary triangle-pattern" />
-                <div className="w-3 h-3 bg-primary triangle-pattern" />
-                <div className="w-3 h-3 bg-section-dark-foreground triangle-pattern" />
-              </div>
-              <span className="text-lg font-bold">NTS Group</span>
+            <div className="mb-4">
+              <img src={logo} alt="NTS Group of Companies" className="h-16 w-auto object-contain" />
             </div>
             <p className="text-section-dark-foreground/60 text-sm leading-relaxed">
               Engineering excellence and innovation across the globe for over five decades.
